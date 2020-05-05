@@ -1,35 +1,47 @@
-
 require 'yaml'
 
 def load_library(file)
   
   hash_of_emoticons=YAML.load_file(file)
   
-  hash_of_emoticons.each |name_of_emoticon, emojis| do
-    emojis.each |emoj| do
+  new_hash_of_emoticons={}
   
-  hash_of_emoticons[:name_of_emoticon]={}
-  hash_of_emoticons[:name_of_emoticon][:english]=emoj[0] 
-  hash_of_emoticons[:name_of_emoticon][:japanese]=emoj[1]
+  hash_of_emoticons.each do |name_of_emoticon, emojis| 
+    
+  
+  new_hash_of_emoticons[name_of_emoticon]={}
+  new_hash_of_emoticons[name_of_emoticon][:english]=emojis[0] 
+  new_hash_of_emoticons[name_of_emoticon][:japanese]=emojis[1]
  
-    end
-  end
-  hash_of_emoticons
+ end
+  new_hash_of_emoticons
 end
 
 
 
-def get_japanese_emoticon
+def get_english_meaning(file, japanese_emoji)
   
-  load_library()
-  # code goes here
+  emoji_translator_hash=load_library(file)
+  
+  emoji_translator_hash.each do |name_of_emoticon,two_emojis|
+  
+   if emoji_translator_hash[name_of_emoticon][:japanese]==japanese_emoji
+     return name_of_emoticon
+   end
+ end 
+  return "Sorry, that emoticon was not found"
 end
 
 
-
-def get_english_meaning
+def get_japanese_emoticon(file, english_emoji)
   
-  load_library()
-  # code goes here
+  emoji_translator_hash=load_library(file)
   
+  emoji_translator_hash.each do |name_of_emoticon,two_emojis|
+  
+   if emoji_translator_hash[name_of_emoticon][:english]==english_emoji
+     return emoji_translator_hash[name_of_emoticon][:japanese]
+   end
+ end
+  return "Sorry, that emoticon was not found"
 end
