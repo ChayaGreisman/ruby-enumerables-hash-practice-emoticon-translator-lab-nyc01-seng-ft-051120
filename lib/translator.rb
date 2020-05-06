@@ -8,32 +8,19 @@ def load_library(file)
   
   hash_of_emoticons.each do |name_of_emoticon, emojis| 
     
-  
-<<<<<<< HEAD
   new_hash_of_emoticons[name_of_emoticon]={}
   new_hash_of_emoticons[name_of_emoticon][:english]=emojis[0] 
   new_hash_of_emoticons[name_of_emoticon][:japanese]=emojis[1]
-=======
-  new_hash_of_emoticons[:name_of_emoticon]={}
-  new_hash_of_emoticons[:name_of_emoticon][:english]=emojis[0] 
-  new_hash_of_emoticons[:name_of_emoticon][:japanese]=emojis[1]
->>>>>>> 07b618402d1858b693be645b25a0164012084192
- 
+
  end
   new_hash_of_emoticons
 end
 
 
 
-<<<<<<< HEAD
 def get_english_meaning(file, japanese_emoji)
   
   emoji_translator_hash=load_library(file)
-=======
-
-
-def get_japanese_emoticon
->>>>>>> 07b618402d1858b693be645b25a0164012084192
   
   emoji_translator_hash.each do |name_of_emoticon,two_emojis|
   
